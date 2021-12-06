@@ -1,0 +1,305 @@
+*, :root {
+  list-style-type: none;
+  font-size: 16px;
+}
+
+.game-window {
+  position: relative;
+  width: 75vw;
+  height: 95vh;
+  border: 3px solid black;
+  border-radius: 15px;
+  background: rgb(0,212,255);
+  background: radial-gradient(circle, rgba(0,212,255,1) 0%, rgba(12,12,89,1) 86%, rgba(0,0,0,1) 100%);
+  margin: 2.5vh auto 0;
+}
+
+/* Section: Title Screens  */
+.title-screen, .end-game-screen {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  height: 30vh;
+  text-align: center;
+}
+
+h1 {
+  font-size: 10rem;
+  margin: 5rem;
+}
+
+.spitzer {
+  position: absolute;
+  opacity: 0.8;
+  transform: rotateZ(30deg);
+  z-index: -1;
+  transform-style: preserve-3d;
+  animation: spin 4s linear infinite;
+}
+
+.btn-list {
+  display: flex;
+  justify-content: space-around;
+  width: 35vw;
+}
+
+.button {
+  border-radius: 10px;
+  font-size: 1.25rem;
+}
+
+.button:hover {
+  transition: 0.3s;
+  background-color: #B22929;
+  color: white;
+}
+
+/* SECTION: How To Play Modal */
+.modal {
+  width: 70%;
+  min-height: 30%;
+  border: 1px solid blue;
+  border-radius: 10px;
+  position: fixed;
+  z-index: 10;
+  padding: 10px;
+  background-color: black;
+  color: silver;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  text-align: center;
+  overflow: hidden;
+}
+
+.modal-active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+#htp-close {
+  position: absolute;
+  width: 30px;
+  top: 5%;
+  right: 5%;
+  border-radius: 50%;
+}
+
+.modal-instructions {
+  width: 100%;
+  height: 75%;
+  display: flex;
+  transition: 0.25s;
+}
+
+.modal-text {
+  min-width: 90%;
+  margin: 0% 5% 0% 5%;
+}
+
+.modal-text p {
+  font-size: 1.1rem;
+}
+
+.htp-btn {
+  margin: 0px 20px;
+}
+
+.htp-text-title {
+  font-size: 1.5rem;
+}
+
+ul li {
+  margin: 10px;
+  font-size: 1.25rem;
+}
+
+.htp-game-setup img{
+  max-height: 150px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.trump-cards-image img{
+  max-height: 120px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.fail-cards-image img{
+  max-height: 110px;
+  object-fit: contain;
+  object-position: center;
+  margin: 5px;
+}
+
+/* Section: Player & Computer Card Hands  */
+.player-hand, .computer-hand {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.player-cards-in-hand, .computer-cards-in-hand {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.player-cards-in-hand img, .computer-cards-in-hand img {
+  height: 15vh;
+  margin: 3px;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+.player-cards-in-hand {
+  bottom: 10px;
+}
+
+.computer-cards-in-hand {
+  top: 10px;
+}
+
+.player-cards-face-down, .computer-cards-face-down {
+  min-width: 10%;
+  height: 15vh;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+}
+
+.player-cards-face-down {
+  bottom: calc(15vh + 20px);
+}
+
+.computer-cards-face-down {
+  top: calc(15vh + 20px);
+}
+
+.player-cards-face-up, .computer-cards-face-up {
+  min-width: 10%;
+  height: 15vh;
+  position: absolute;
+}
+
+.player-cards-face-up {
+  bottom: calc(15vh + 30px);
+  left: 51%;
+  transform: translateX(-50%);
+}
+
+.player-cards-face-down img, .computer-cards-face-down img, .player-cards-face-up img, .computer-cards-face-up img {
+  height: 15vh;
+  padding: 2px;
+  margin-right: 18px;
+  border-radius: 5px;
+}
+
+.computer-cards-face-up {
+  top: calc(15vh + 30px);
+  right: 51%;
+  transform: translateX(50%);
+}
+
+.played-player-card, .played-computer-card {
+  position: absolute;
+  top: 50%;
+}
+
+.played-computer-card {
+  transform: translateX(-40%) translateY(-50%);
+  left: 40%;
+}
+
+.played-player-card {
+  transform: translateX(40%) translateY(-50%);
+  right: 40%;
+}
+
+.played-player-card img, .played-computer-card img{
+  height: 15vh;
+}
+
+.center-screen {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  top: 50%;
+  width: 100px;
+  height: 100px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#player-card-pile, #player-trick-score {
+  top: 50%;
+  left: 5%;
+}
+
+#computer-card-pile, #computer-trick-score {
+  top: 50%;
+  right: 5%;
+}
+
+#player-card-pile, #computer-card-pile {
+  transform: translateY(-50%);
+}
+
+#player-trick-score, #computer-trick-score {
+  transform: translateY(-55%);
+}
+
+#player-card-pile, #player-trick-score, #computer-card-pile, #computer-trick-score {
+  position: absolute;
+  height: 15vh;
+  min-width: 80px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Section: End Game Screen */
+
+h2 {
+  font-size: 5rem;
+}
+
+.score-card {
+  padding-bottom: 1rem;
+}
+
+.score-card p {
+  font-size: 2rem;
+}
+
+.card-motion {
+  transition: 0.5s
+}
+
+.playable {
+  background-color: yellow;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Section: Animations */
+
+@keyframes spin {
+  0% {
+    transform: rotateY(0deg) rotateZ(30deg);
+  }
+  50%, 100% {
+    transform: rotateY(360deg) rotateZ(30deg);
+  }
+}

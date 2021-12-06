@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Play Spitzer</title>
+
+    <link rel="stylesheet" href="Spitzer.css">
+
+    <script src="Spitzer.js" charset="utf-8" defer></script>
+  </head>
+
+  <body>
+    <main class="game-window">
+      <section id="title-screens">
+        <div class="title-screen" id="opening-title-screen">
+          <h1>Spitzer</h1>
+          <img class="spitzer" src="https://deckofcardsapi.com/static/img/7D.png" alt="">
+          <div class="btn-list">
+            <button type="button" class="button" id="new-game">Play Game</button>
+            <button type="button" class="button" id="how-to-play">How To Play</button>
+          </div>
+        </div>
+
+        <div class="title-screen hidden" id="play-title-screen">
+          <h1>Spitzer</h1>
+          <img class="spitzer" src="https://deckofcardsapi.com/static/img/7D.png" alt="">
+          <div class="btn-list">
+            <button type="button" class="button" id="one-v-one">Player vs Computer</button>
+            <!--<button type="button" class="button" id="1v3">1v3</button>-->
+            <button type="button" class="button" id="back">back</button>
+          </div>
+        </div>
+
+        <div class="modal">
+          <div class="modal-header">
+            <h3 class="htp-title">How To Play</h3>
+            <button type="button" class="button" id="htp-close">X</button>
+          </div>
+          <div class="modal-instructions">
+            <div class="modal-text htp-objectives">
+              <h4 class="htp-text-title">Game Objective</h4>
+              <p>The main objective of spitzer is to be the first player to 42 points. Players increase their score by winning the hand.</p>
+                <ul>
+                  <li>9 points for taking 120 trick points</li>
+                  <li>6 points for taking 90 - 119 trick points</li>
+                  <li>3 points for taking 61 - 89 trick points</li>
+                  <li>A tie goes to the player to the left of the dealer</li>
+                </ul>
+              <p>A game of spitzer consists of multiple hands where each player is trying get as many trick points as they can to gain more points to their overall score.</p>
+            </div>
+            <div class="modal-text htp-game-setup">
+              <h4 class="htp-text-title">Game Setup</h4>
+              <p>Each player starts with 16 cards. 8 cards in their hand, 4 face down on the table, and 4 face up on top of the face down cards. The image below shows an example of a players hand.</p>
+              <img src="file:///C:\Users\Tharin\Documents\Java Projects\Games\Spitzer\Images\GameLayout.png" alt="">
+              <p>The player to the left of the dealer plays the first card. When it is the player's turn, cards that can be played will have a yellow border around them.</p>
+            </div>
+            <div class="modal-text htp-cards">
+              <h4 class="htp-text-title">Cards</h4>
+              <p>Trump Cards</p>
+              <div class="trump-cards-image">
+                <img src="file:///C:\Users\Tharin\Documents\Java Projects\Games\Spitzer\Images\Trump Cards.png" alt="Trump Cards from Highest to lowest. Queen of Clubs, 7 of Diamonds, Queen of Spades, Queen of Hearts, Queen of Diamonds, Jack of Clubs, Jack of Spades, Jack of Hearts, Jack of Diamonds, Ace of Diamonds, Ten of Diamonds, Nine of Diamonds, Eight of Diamonds.">
+              </div>
+              <p>Fail Cards</p>
+              <div class="fail-cards-image">
+                <img src="file:///C:\Users\Tharin\Documents\Java Projects\Games\Spitzer\Images\FailCards.png" alt="Fail cards from highest to lowest. Ace of Hearts, Clubs, or Spades, Ten of Hearts, Clubs, or Spades, King of Hearts, Clubs, or Spades, Nine of Hearts, Clubs, or Spades, Eight of Hearts, Clubs, or Spades, Seven of Hearts, Clubs, or Spades">
+              </div>
+            </div>
+            <div class="modal-text htp-card-values">
+              <h4 class="htp-text-title">Trick Points</h4>
+              <p>Each card has a number of points associated with its number or face. The suit does not change the point value of the cards. The following are the points given to each card:</p>
+              <ul class="card-points">
+                <li>Aces = 11</li>
+                <li>Tens = 10</li>
+                <li>Kings = 4</li>
+                <li>Queens = 3</li>
+                <li>Jacks = 2</li>
+                <li>Nines, Eights, and sevens = 0</li>
+              </ul>
+            </div>
+            <div class="modal-text htp-playing">
+              <h4 class="htp-text-title">Playing the Hand</h4>
+              <p>The cards that are in a players hand, as well as the face up cards on the table, can be played. The cards that are face down on the table are added to a players hand when the face up card above them is played.</p>
+              <p>When a fail card is led, all players must play that same suit if they have a fail card of the same suit, else the player may play trump.  When a trump card is led, all players must play trump if they have any.</p>
+              <p>If player is out of trump when they are supposed to play trump card, they must play a fail card instead (fail cards of a different suit then the card led automatically lose reguardless of the cards value).</p>
+              <p>Players then determine whose card is the highest (see chart in cards). The player that wins the trick leds the next card unless all cards have been played.</p>
+              <p>If all cards have been played, the player with the highest total score wins the hand and is given the associated points seen in the Game Objectives section.</p>
+            </div>
+          </div>
+          <div class="htp-btns">
+            <button type="button" class="button htp-btn" id="htp-left"><</button>
+            <button type="button" class="button htp-btn" id="htp-right">></button>
+          </div>
+        </div>
+      </section>
+
+      <article class="game-screen">
+        <section id="player-hand">
+          <div class="player-cards-in-hand">
+          </div>
+
+          <div class="player-cards-face-down"></div>
+
+          <div class="player-cards-face-up"></div>
+
+          <div class="player-trick-pile hidden">
+            <img src="" alt="" id="player-card-pile">
+            <p id="player-trick-score"></p>
+          </div>
+        </section>
+
+        <section id="computer-hand">
+          <div class="computer-cards-in-hand computer-playable-cards"></div>
+
+          <div class="computer-cards-face-down"></div>
+
+          <div class="computer-cards-face-up computer-playable-cards"></div>
+
+          <div class="computer-trick-pile hidden">
+            <img src="" alt="" id="computer-card-pile">
+            <p id="computer-trick-score"></p>
+          </div>
+        </section>
+
+        <section id="played-cards hidden">
+          <div class="played-player-card"></div>
+          <div class="center-screen">
+            <p id="winner-text"></p>
+            <p id="points-text"></p>
+          </div>
+          <div class="played-computer-card"></div>
+        </section>
+      </article>
+
+      <section id="game-end-screens">
+        <div class="end-game-screen hidden" id="player-wins-screen">
+          <h2 id="player-wins-text">Player Wins Hand</h2>
+          <div class="score-card">
+            <p class="player-score-card">Player</p>
+            <p class="com-score-card">Computer</p>
+          </div>
+          <div class="end-game-btns">
+            <button type="button" class="button next-hand-btn">Continue</button>
+            <button type="button" class="button main-menu-btn">Main Menu</button>
+          </div>
+        </div>
+
+        <div class="end-game-screen hidden" id="com-wins-screen">
+          <h2 id="com-wins-text">Computer Wins Hand</h2>
+          <div class="score-card">
+            <p class="player-score-card">Player</p>
+            <p class="com-score-card">Computer</p>
+          </div>
+          <div class="end-game-btns">
+            <button type="button" class="button next-hand-btn">Continue</button>
+            <button type="button" class="button main-menu-btn">Main Menu</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
