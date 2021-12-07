@@ -29,7 +29,7 @@
 }
 
 h1 {
-  font-size: 10rem;
+  font-size: 30vh;
   margin: 5rem;
 }
 
@@ -262,7 +262,7 @@ ul li {
   position: absolute;
   height: 15vh;
   min-width: 80px;
-  font-size: 2.5rem;
+  font-size: 8vh;
   font-weight: bold;
   text-align: center;
 }
@@ -270,7 +270,7 @@ ul li {
 /* Section: End Game Screen */
 
 h2 {
-  font-size: 5rem;
+  font-size: 12vh;
 }
 
 .score-card {
@@ -278,7 +278,7 @@ h2 {
 }
 
 .score-card p {
-  font-size: 2rem;
+  font-size: 6vh;
 }
 
 .card-motion {
