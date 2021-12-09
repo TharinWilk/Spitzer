@@ -320,7 +320,7 @@ h2 {
 
 /* Section: Media Queries */
 
-@media screen and (orientation: landscape) {
+@media all and (orientation:portrait) {
   .title-screen, .modal, .game-screen, .end-game-screens {
     display: none;
   }
