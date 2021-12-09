@@ -29,12 +29,14 @@
 }
 
 h1 {
-  font-size: 30vh;
+  font-size: 15vw;
   margin: 5rem;
 }
 
 .spitzer {
   position: absolute;
+  max-width: 30vh;
+  max-height: 20vw;
   opacity: 0.8;
   transform: rotateZ(30deg);
   z-index: -1;
@@ -318,7 +320,7 @@ h2 {
 
 /* Section: Media Queries */
 
-@media (max-width: 520px)  {
+@media screen (max-device-width : 320px)  {
   .title-screen, .modal, .game-screen, .end-game-screens {
     display: none;
   }
