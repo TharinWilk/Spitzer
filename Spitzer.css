@@ -242,31 +242,42 @@ ul li {
   text-align: center;
 }
 
-#player-card-pile, #player-trick-score {
+.trick-pile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 15vh;
+  aspect-ratio: 4 / 5;
+}
+
+#player-card-pile, .player-trick-pile {
   top: 50%;
   left: 5%;
 }
 
-#computer-card-pile, #computer-trick-score {
+#computer-card-pile, .computer-trick-pile {
   top: 50%;
   right: 5%;
 }
 
-#player-card-pile, #computer-card-pile {
+#player-card-pile, #computer-card-pile, .player-trick-pile, .computer-trick-pile {
   transform: translateY(-50%);
 }
 
-#player-trick-score, #computer-trick-score {
-  transform: translateY(-55%);
-}
 
-#player-card-pile, #player-trick-score, #computer-card-pile, #computer-trick-score {
+#player-card-pile, #computer-card-pile  {
   position: absolute;
   height: 15vh;
-  min-width: 80px;
+  margin: 0;
+}
+
+#player-trick-score, #computer-trick-score {
   font-size: 8vh;
   font-weight: bold;
   text-align: center;
+  margin: 0;
+  z-index: 10;
 }
 
 /* Section: End Game Screen */
