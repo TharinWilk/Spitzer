@@ -320,7 +320,7 @@ h2 {
 
 /* Section: Media Queries */
 
-@media screen (max-device-width : 320px)  {
+@media screen and (orientation: landscape) {
   .title-screen, .modal, .game-screen, .end-game-screens {
     display: none;
   }
